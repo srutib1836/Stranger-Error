@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STRANGER THINGS: The Connection</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Landing Page (Login) -->
+    <div id="landing">
+        <h1>STRANGER THINGS</h1>
+        <p style="font-family: 'Courier New'; letter-spacing: 2px;">THE CONNECTION IS LOST</p>
+        
+        <div class="login-container" style="margin-top: 3rem; display: flex; flex-direction: column; gap: 15px; align-items: center;">
+            <input type="password" id="accessCodeInput" placeholder="ENTER PASSCODE" 
+                   style="font-family: 'Courier New', monospace; font-size: 1.2rem; text-align: center; width: 300px; padding: 15px; outline: none;">
+            
+            <button class="role-btn" onclick="authenticateUser()" style="width: 100%;">ENTER THE VOID</button>
+            
+            <p id="loginError" style="color: #ff0000; display: none; margin-top: 10px; font-weight: bold; text-shadow: 0 0 5px #f00;">⚠️ ACCESS DENIED</p>
+        </div>
+    </div>
+
+    <!-- The Fan Interface (Employee) -->
+    <div id="employee">
+        <div class="desktop-bg">
+            <!-- Row 1: Mostly Normal Apps -->
+            <div class="desktop-icon" style="top: 20px; left: 20px;" onclick="showDecoy('calc')">
+                <div class="icon-img">🔢</div><div class="icon-label">Calculator</div>
+            </div>
+            <div class="desktop-icon" style="top: 20px; left: 130px;" onclick="showDecoy('notepad')">
+                <div class="icon-img">📝</div><div class="icon-label">Notepad</div>
+            </div>
+            <div class="desktop-icon" style="top: 20px; left: 240px;" onclick="showDecoy('solitaire')">
+                <div class="icon-img">🃏</div><div class="icon-label">Solitaire</div>
+            </div>
+            <div class="desktop-icon" style="top: 20px; left: 350px;" onclick="showDecoy('mspaint')">
+                <div class="icon-img">🎨</div><div class="icon-label">Paint</div>
+            </div>
+            <div class="desktop-icon" style="top: 20px; left: 460px;" onclick="showDecoy('music')">
+                <div class="icon-img">🎵</div><div class="icon-label">Winamp</div>
+            </div>
+            <div class="desktop-icon" style="top: 20px; left: 570px;" onclick="showDecoy('email')">
+                <div class="icon-img">📧</div><div class="icon-label">Outlook</div>
+            </div>
+            <div class="desktop-icon" style="top: 20px; left: 680px;" onclick="showDecoy('zoom')">
+                <div class="icon-img">📹</div><div class="icon-label">Zoom</div>
+            </div>
+            <div class="desktop-icon" style="top: 20px; left: 790px;" onclick="showInfoModal()">
+                <div class="icon-img">📄</div><div class="icon-label">HELP.txt</div>
+            </div>
+
+            <!-- Row 2: Mix of Normal & STRANGER THINGS ERRORS -->
+            <div class="desktop-icon" style="top: 150px; left: 20px;" onclick="showError1()">
+                <!-- ERROR 1 (401) -->
+                <div class="icon-img">🔬</div><div class="icon-label">Hawkins Lab</div> 
+            </div>
+            <div class="desktop-icon" style="top: 150px; left: 130px;" onclick="showDecoy('recycle')">
+                <div class="icon-img">🗑️</div><div class="icon-label">Recycle Bin</div>
+            </div>
+            <div class="desktop-icon" style="top: 150px; left: 240px;" onclick="showDecoy('photos')">
+                <div class="icon-img">🖼️</div><div class="icon-label">Photos</div>
+            </div>
+            <div class="desktop-icon" style="top: 150px; left: 350px;" onclick="showDecoy('word')">
+                <div class="icon-img">📃</div><div class="icon-label">Word</div>
+            </div>
+            <div class="desktop-icon" style="top: 150px; left: 460px;" onclick="showDecoy('excel')">
+                <div class="icon-img">📊</div><div class="icon-label">Excel</div>
+            </div>
+            <div class="desktop-icon" style="top: 150px; left: 570px;" onclick="showError5()">
+                <!-- ERROR 5 (403) -->
+                <div class="icon-img">⚡</div><div class="icon-label">The Gate</div> 
+            </div>
+            <div class="desktop-icon" style="top: 150px; left: 680px;" onclick="showDecoy('powerpoint')">
+                <div class="icon-img">📽️</div><div class="icon-label">PowerPoint</div>
+            </div>
+            <div class="desktop-icon" style="top: 150px; left: 790px;" onclick="showError2()">
+                <!-- ERROR 2 (404) -->
+                <div class="icon-img">👓</div><div class="icon-label">Barb_Search</div> 
+            </div>
+
+            <!-- Row 3: Mix of Normal & STRANGER THINGS ERRORS -->
+            <div class="desktop-icon" style="top: 280px; left: 20px;" onclick="showError3()">
+                <!-- ERROR 3 (503) -->
+                <div class="icon-img">📺</div><div class="icon-label">Netflix</div> 
+            </div>
+            <div class="desktop-icon" style="top: 280px; left: 130px;" onclick="showDecoy('games')">
+                <div class="icon-img">🕹️</div><div class="icon-label">Arcade</div>
+            </div>
+            <div class="desktop-icon" style="top: 280px; left: 240px;" onclick="showError4()">
+                <!-- ERROR 4 (418) -->
+                <div class="icon-img">🧇</div><div class="icon-label">Eggos</div> 
+            </div>
+            <div class="desktop-icon" style="top: 280px; left: 350px;" onclick="showDecoy('spotify')">
+                <div class="icon-img">🎧</div><div class="icon-label">Spotify</div>
+            </div>
+            <div class="desktop-icon" style="top: 280px; left: 460px;" onclick="showDecoy('discord')">
+                <div class="icon-img">💭</div><div class="icon-label">Discord</div>
+            </div>
+            <div class="desktop-icon" style="top: 280px; left: 570px;" onclick="showDecoy('slack')">
+                <div class="icon-img">💬</div><div class="icon-label">Slack</div>
+            </div>
+            <div class="desktop-icon" style="top: 280px; left: 680px;" onclick="showDecoy('cerebro')">
+                <div class="icon-img">🧠</div><div class="icon-label">Cerebro</div>
+            </div>
+            <div class="desktop-icon" style="top: 280px; left: 790px;" onclick="showError6()">
+                <!-- ERROR 6 (301) -->
+                <div class="icon-img">🧒</div><div class="icon-label">Will_Byers</div> 
+            </div>
+
+            <!-- Row 4: Mostly Normal Apps -->
+            <div class="desktop-icon" style="top: 410px; left: 20px;" onclick="showDecoy('chrome')">
+                <div class="icon-img">🌍</div><div class="icon-label">Chrome</div>
+            </div>
+            <div class="desktop-icon" style="top: 410px; left: 130px;" onclick="showDecoy('calendar')">
+                <div class="icon-img">📅</div><div class="icon-label">Calendar</div>
+            </div>
+            <div class="desktop-icon" style="top: 410px; left: 240px;" onclick="showDecoy('tasks')">
+                <div class="icon-img">✅</div><div class="icon-label">To-Do</div>
+            </div>
+            <div class="desktop-icon" style="top: 410px; left: 350px;" onclick="showDecoy('camera')">
+                <div class="icon-img">📷</div><div class="icon-label">Camera</div>
+            </div>
+            <div class="desktop-icon" style="top: 410px; left: 460px;" onclick="showDecoy('files')">
+                <div class="icon-img">📁</div><div class="icon-label">My Docs</div>
+            </div>
+            <div class="desktop-icon" style="top: 410px; left: 570px;" onclick="showDecoy('terminal')">
+                <div class="icon-img">⌨️</div><div class="icon-label">Terminal</div>
+            </div>
+            <div class="desktop-icon" style="top: 410px; left: 680px;" onclick="showDecoy('settings')">
+                <div class="icon-img">⚙️</div><div class="icon-label">Settings</div>
+            </div>
+            <div class="desktop-icon" style="top: 410px; left: 790px;" onclick="showDecoy('backup')">
+                <div class="icon-img">💾</div><div class="icon-label">Backup</div>
+            </div>
+
+            <!-- THEMED POST-IT NOTES -->
+            
+            <!-- 1. The Main Clue (Yellow) -->
+            <div class="postit postit-yellow" style="top: 260px; left: 880px; transform: rotate(1deg); font-size: 0.9rem; width: 240px;">
+                <div class="tape-header">🎄 JOYCE'S WALL</div>
+                <div style="padding-top: 10px; font-family: 'Courier New'; font-weight: bold;">
+                    THE LIGHTS ARE BLINKING:<br><br>
+                    1. Clearance Denied.<br>
+                    2. Barb is Gone.<br>
+                    3. Signal Interference.<br>
+                    4. Just a Teapot.<br>
+                    5. Gate is Forbidden.<br>
+                    6. Will has Moved.
+                </div>
+            </div>
+
+            <!-- 2. Flavor Note (Pink) -->
+            <div class="postit" style="background: #ffb3e6; top: 40px; left: 920px; transform: rotate(-3deg); font-family: 'Courier New'; font-weight: bold; font-size: 0.8rem;">
+                <div style="border-bottom: 1px dashed #000; padding-bottom: 5px; margin-bottom: 5px;">🍦 SCOOPS AHOY</div>
+                Shift starts at 3PM.<br>
+                Don't be late, Dingus!<br>
+                - Robin
+            </div>
+
+            <!-- 3. Flavor Note (Blue) -->
+            <div class="postit" style="background: #a8e6ff; top: 60px; left: 1100px; transform: rotate(4deg); font-family: 'Courier New'; font-weight: bold; font-size: 0.8rem;">
+                <div style="border-bottom: 1px dashed #000; padding-bottom: 5px; margin-bottom: 5px;">🎲 D&D NIGHT</div>
+                Campaign continues Saturday.<br>
+                Bring extra dice.<br>
+                NO FIREBALLS INDOORS.
+            </div>
+
+            <!-- 4. Flavor Note (Green) -->
+            <div class="postit" style="background: #99ff99; top: 400px; left: 1160px; transform: rotate(-1deg); font-family: 'Courier New'; font-weight: bold; font-size: 0.8rem;">
+                <div style="border-bottom: 1px dashed #000; padding-bottom: 5px; margin-bottom: 5px;">📻 CODE RED</div>
+                Do you copy?<br>
+                The silver cat feeds...<br>
+                Meet at Weathertop.
+            </div>
+
+            <!-- Password Input -->
+            <div class="password-input">
+                <label>📡 RE-ALIGN SATELLITE DISH</label>
+                <input type="text" id="codeInput" maxlength="18" placeholder="ENTER FREQUENCY CODE...">
+                <button onclick="checkCode()">BOOST SIGNAL</button>
+                <div id="codeMessage" class="code-message" style="display:none;"></div>
+            </div>
+        </div>
+
+        <div class="taskbar">
+            <div class="start-btn">HAWKINS OS</div>
+            <div class="clock" id="clock"></div>
+        </div>
+    </div>
+
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal()"></div>
+    <div class="modal" id="genericModal">
+        <div class="modal-header">
+            <span class="modal-title" id="modalTitle">System Message</span>
+            <span class="modal-close" onclick="closeModal()">X</span>
+        </div>
+        <div class="modal-body" id="modalContent"></div>
+    </div>
+
+    <!-- SysAdmin Interface (Cerebro) -->
+    <div id="sysadmin">
+        <div class="terminal-content">
+            <h1>📡 CEREBRO TERMINAL v1.0</h1>
+            <div class="terminal-header">
+                <p>> OPERATOR: DUSTIN HENDERSON</p>
+                <p>> STATUS: UPSIDE DOWN INTERFERENCE DETECTED</p>
+                <p>> MISSION: GUIDE THE STRANDED USER TO RESTORE NETFLIX CONNECTION</p>
+            </div>
+
+            <p style="margin-top: 2rem; color: #ff0;">> INCIDENT LOG (CHRONOLOGICAL)</p>
+            <table style="border: 1px dashed #0f0;">
+                <tr style="background: #003300;"><th>TIME</th><th>EVENT TYPE</th></tr>
+                <tr><td>19:83</td><td>LAB_SECURITY: Clearance Level 4 Required</td></tr>
+                <tr><td>19:84</td><td>MISSING_PERSON: Resource Not Found in Dimension</td></tr>
+                <tr><td>19:85</td><td>MIND_FLAYER: Signal Overload / Unavailable</td></tr>
+                <tr><td>19:86</td><td>EGGO_ERROR: Device is a Teapot</td></tr>
+                <tr><td>19:87</td><td>GATE_SEALED: Access Forbidden by Eleven</td></tr>
+                <tr><td>19:88</td><td>BYERS_RESIDENCE: Target Moved to New Dimension</td></tr>
+            </table>
+
+            <p style="margin-top: 2rem; color: #ff0;">> HAWKINS LAB PROTOCOL MANUAL (HTTP)</p>
+            <table>
+                <thead><tr><th>CODE</th><th>MEANING</th><th>TRANSLATION</th></tr></thead>
+                <tbody>
+                    <tr><td>301</td><td>Moved</td><td>Target has relocated permanently.</td></tr>
+                    <tr><td>401</td><td>Unauthorized</td><td>Clearance / ID required.</td></tr>
+                    <tr><td>403</td><td>Forbidden</td><td>Gate sealed. No entry.</td></tr>
+                    <tr><td>404</td><td>Not Found</td><td>Target is missing/gone.</td></tr>
+                    <tr><td>418</td><td>I'm a Teapot</td><td>Incorrect device usage (Waffles/Toast).</td></tr>
+                    <tr><td>503</td><td>Unavailable</td><td>System overloaded by Mind Flayer.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Success Screen -->
+    <div id="success">
+        <h1>CONNECTION RESTORED</h1>
+        <p style="font-size: 2rem; color: #fff;">WELCOME TO HAWKINS.</p>
+        <p style="margin-top: 2rem;">NETFLIX IS LOADING...</p>
+        <div style="font-size: 5rem; margin-top: 20px;">🧇</div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
